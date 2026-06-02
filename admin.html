@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Back Office — Quiz ESG</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ── LOGIN ──────────────────────────────────────────────── -->
+  <div id="login-screen" class="admin-login">
+    <div class="login-card">
+      <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
+           alt="ESG" class="login-logo">
+      <h1>Back Office</h1>
+      <p>Gestion du quiz formations</p>
+      <form id="login-form">
+        <input type="password" id="admin-pwd" placeholder="Mot de passe" autocomplete="current-password">
+        <button type="submit">Accéder →</button>
+        <p id="login-error" style="display:none;color:#d46035;font-size:.85rem;margin-top:.5rem">
+          Mot de passe incorrect.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ── APP ────────────────────────────────────────────────── -->
+  <div id="admin-app" style="display:none">
+
+    <header class="admin-header">
+      <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
+           alt="ESG" class="admin-logo">
+      <span class="admin-title">Back Office — Quiz Formations</span>
+      <a href="index.html" class="btn-preview" target="_blank">Voir le quiz →</a>
+    </header>
+
+    <div class="admin-layout">
+
+      <!-- Sidebar tabs -->
+      <nav class="admin-nav">
+        <button class="tab-btn active" data-tab="formations">Formations</button>
+        <button class="tab-btn" data-tab="questions">Questions</button>
+        <button class="tab-btn" data-tab="regles">Règles de correspondance</button>
+        <button class="btn-reset" onclick="resetToDefaults()">Réinitialiser les données</button>
+      </nav>
+
+      <!-- Content -->
+      <main class="admin-content">
+
+        <!-- ── FORMATIONS ──────────────────────────────────── -->
+        <div id="tab-formations" class="tab-content active">
+          <div class="content-header">
+            <h2>Formations</h2>
+            <button class="btn-add" onclick="openFormationEditor('__new__')">+ Ajouter une formation</button>
+          </div>
+          <div id="formations-list" class="items-list"></div>
+
+          <!-- Editor -->
+          <div id="formation-editor" class="editor-panel" style="display:none">
+            <h3 class="editor-title">Éditer la formation</h3>
+            <input type="hidden" id="fe-id">
+
+            <div class="field-row">
+              <div class="field-group">
+                <label>Titre *</label>
+                <input type="text" id="fe-titre" placeholder="Ex : Bachelor Management d'Entreprise">
+              </div>
+              <div class="field-group field-group--sm">
+                <label>Type</label>
+                <select id="fe-type">
+                  <option>Bachelor</option>
+                  <option>Mastère</option>
+                  <option>MBA</option>
+                  <option>DSG</option>
+                  <option>DSCG</option>
+                  <option>Autre</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>Description (5 lignes)</label>
+              <textarea id="fe-description" rows="5" placeholder="Texte de présentation de la formation..."></textarea>
+            </div>
+
+            <div class="field-group">
+              <label>URL de l'image</label>
+              <input type="text" id="fe-image" placeholder="https://...">
+            </div>
+
+            <div class="field-group">
+              <label>Infos clés <span class="hint">(une par ligne, ex : Bac+3)</span></label>
+              <textarea id="fe-infos" rows="4" placeholder="Bac+3&#10;Alternance disponible&#10;Titre RNCP niv. 6"></textarea>
+            </div>
+
+            <div class="field-row three-cols">
+              <div class="field-group">
+                <label>Villes disponibles</label>
+                <div class="checkbox-grid" id="fe-villes">
+                  <label class="cb-label"><input type="checkbox" value="aix">        Aix-en-Provence</label>
+                  <label class="cb-label"><input type="checkbox" value="bordeaux">   Bordeaux</label>
+                  <label class="cb-label"><input type="checkbox" value="biarritz">   Biarritz</label>
+                  <label class="cb-label"><input type="checkbox" value="dijon">      Dijon</label>
+                  <label class="cb-label"><input type="checkbox" value="lyon">       Lyon</label>
+                  <label class="cb-label"><input type="checkbox" value="montpellier">Montpellier</label>
+                  <label class="cb-label"><input type="checkbox" value="nantes">     Nantes</label>
+                  <label class="cb-label"><input type="checkbox" value="rennes">     Rennes</label>
+                  <label class="cb-label"><input type="checkbox" value="rouen">      Rouen</label>
+                  <label class="cb-label"><input type="checkbox" value="strasbourg"> Strasbourg</label>
+                  <label class="cb-label"><input type="checkbox" value="toulouse">   Toulouse</label>
+                  <label class="cb-label"><input type="checkbox" value="tours">      Tours</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Domaines</label>
+                <div class="checkbox-grid" id="fe-domaines">
+                  <label class="cb-label"><input type="checkbox" value="commerce">      Commerce et Marketing</label>
+                  <label class="cb-label"><input type="checkbox" value="communication"> Communication</label>
+                  <label class="cb-label"><input type="checkbox" value="rh">            Ressources Humaines</label>
+                  <label class="cb-label"><input type="checkbox" value="finance">       Finance</label>
+                  <label class="cb-label"><input type="checkbox" value="management">    Gestion / Management</label>
+                  <label class="cb-label"><input type="checkbox" value="immobilier">    Immobilier</label>
+                  <label class="cb-label"><input type="checkbox" value="sport">         Sport</label>
+                  <label class="cb-label"><input type="checkbox" value="luxe">          Luxe</label>
+                </div>
+              </div>
+
+              <div class="field-group">
+                <label>Niveaux d'entrée</label>
+                <div class="checkbox-grid" id="fe-niveaux">
+                  <label class="cb-label"><input type="checkbox" value="bac">   Lycée / Bac</label>
+                  <label class="cb-label"><input type="checkbox" value="bac1">  Bac+1</label>
+                  <label class="cb-label"><input type="checkbox" value="bac2">  Bac+2</label>
+                  <label class="cb-label"><input type="checkbox" value="bac3">  Bac+3</label>
+                  <label class="cb-label"><input type="checkbox" value="bac4">  Bac+4</label>
+                  <label class="cb-label"><input type="checkbox" value="bac5">  Bac+5</label>
+                  <label class="cb-label"><input type="checkbox" value="mba">   MBA</label>
+                  <label class="cb-label"><input type="checkbox" value="autre"> Autre</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="editor-actions">
+              <button class="btn-save" onclick="saveFormation()">Enregistrer</button>
+              <button class="btn-cancel" onclick="closeFormationEditor()">Annuler</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── QUESTIONS ───────────────────────────────────── -->
+        <div id="tab-questions" class="tab-content">
+          <div class="content-header">
+            <h2>Questions du quiz</h2>
+            <button class="btn-add" onclick="openQuestionEditor('__new__')">+ Ajouter une question</button>
+          </div>
+          <div id="questions-list" class="items-list"></div>
+
+          <div id="question-editor" class="editor-panel" style="display:none">
+            <h3 class="editor-title">Éditer la question</h3>
+            <input type="hidden" id="qe-id">
+
+            <div class="field-row">
+              <div class="field-group">
+                <label>Texte de la question *</label>
+                <input type="text" id="qe-text" placeholder="Ex : Dans quelle ville souhaitez-vous étudier ?">
+              </div>
+              <div class="field-group field-group--sm">
+                <label>Étape (ordre)</label>
+                <input type="number" id="qe-step" min="1" value="1">
+              </div>
+              <div class="field-group field-group--sm">
+                <label>Type d'affichage</label>
+                <select id="qe-type">
+                  <option value="chips">Chips (boutons)</option>
+                  <option value="binary">Binaire (Oui/Non)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label>
+                Choix de réponses
+                <span class="hint">(un par ligne, format : <code>id|Label affiché</code>)</span>
+              </label>
+              <textarea id="qe-choices" rows="8"
+                placeholder="oui|Oui&#10;non|Non"></textarea>
+            </div>
+
+            <div class="editor-actions">
+              <button class="btn-save" onclick="saveQuestion()">Enregistrer</button>
+              <button class="btn-cancel" onclick="closeQuestionEditor()">Annuler</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RÈGLES ──────────────────────────────────────── -->
+        <div id="tab-regles" class="tab-content">
+          <div class="content-header">
+            <h2>Règles de correspondance</h2>
+            <p class="content-desc">
+              Pour chaque formation, cochez les villes, domaines et niveaux d'entrée qui déclenchent son affichage dans les résultats.
+              Les modifications sont sauvegardées automatiquement.
+            </p>
+          </div>
+          <div id="regles-container"></div>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

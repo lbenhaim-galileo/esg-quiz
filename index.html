@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz ESG — Quelle formation est faite pour vous ?</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ── LANDING ─────────────────────────────────────────────── -->
+  <div id="screen-landing" class="screen active">
+    <div class="landing-content">
+      <div class="logo-container">
+        <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
+             alt="ESG" class="logo">
+      </div>
+      <h1 class="quiz-title">Quelle formation de l'ESG<br>est faite pour vous ?</h1>
+      <p class="quiz-subtitle">Répondez à quelques questions et découvrez la formation qui vous correspond.</p>
+      <button id="btn-start" class="btn-start">Commencer</button>
+    </div>
+  </div>
+
+  <!-- ── QUIZ ────────────────────────────────────────────────── -->
+  <div id="screen-quiz" class="screen">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
+             alt="ESG" class="logo-small">
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+          </div>
+          <span id="progress-text" class="progress-text">Question 1 / 4</span>
+        </div>
+      </div>
+      <div id="question-container" class="question-container"></div>
+    </div>
+  </div>
+
+  <!-- ── CONTACT ──────────────────────────────────────────────── -->
+  <div id="screen-contact" class="screen">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
+             alt="ESG" class="logo-small">
+        <div class="progress-container">
+          <div class="progress-bar">
+            <div class="progress-fill" style="width:100%"></div>
+          </div>
+          <span class="progress-text">Dernière étape</span>
+        </div>
+      </div>
+      <div class="contact-container">
+        <div class="question-card" style="max-width:520px">
+          <p class="question-number">Dernière étape</p>
+          <h2 class="question-title">Vos coordonnées</h2>
+          <p class="question-subtitle" style="margin-top:-.5rem;margin-bottom:1.5rem">
+            Pour afficher vos résultats personnalisés
+          </p>
+          <form id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Prénom *</label>
+                <input type="text" id="f-prenom" required placeholder="Votre prénom">
+              </div>
+              <div class="form-group">
+                <label>Nom *</label>
+                <input type="text" id="f-nom" required placeholder="Votre nom">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email *</label>
+              <input type="email" id="f-email" required placeholder="votre@email.fr">
+            </div>
+            <div class="form-group">
+              <label>Téléphone *</label>
+              <input type="tel" id="f-tel" required placeholder="06 00 00 00 00">
+            </div>
+            <button type="submit" class="btn-submit">Découvrir mes formations →</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RÉSULTATS ────────────────────────────────────────────── -->
+  <div id="screen-results" class="screen">
+    <div class="quiz-container">
+      <div class="quiz-header">
+        <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
+             alt="ESG" class="logo-small">
+      </div>
+      <div class="results-container">
+        <h2 class="results-title">Votre sélection personnalisée</h2>
+        <p id="results-subtitle" class="results-subtitle"></p>
+        <div id="results-list" class="results-list"></div>
+        <div class="results-cta">
+          <a href="https://www.esg.fr/" target="_blank" class="btn-cta">Visiter le site ESG</a>
+          <button onclick="restartQuiz()" class="btn-restart">Recommencer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/quiz.js"></script>
+</body>
+</html>
