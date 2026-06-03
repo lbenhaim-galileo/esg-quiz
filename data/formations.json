@@ -1,0 +1,46 @@
+[
+  {
+    "id": "bachelor-management",
+    "titre": "Bachelor Management d'Entreprise",
+    "type": "Bachelor",
+    "description": "Une formation généraliste et opérationnelle qui vous prépare à piloter des projets, manager des équipes et comprendre les enjeux de l'entreprise moderne. Vous développez des compétences transversales en stratégie, gestion et leadership. Le programme allie cours magistraux, cas pratiques et alternance. Diplômés, vous êtes opérationnels dès la sortie dans tous les secteurs. Un tremplin vers nos Mastères spécialisés.",
+    "image": "",
+    "infos_cles": ["Bac+3", "Alternance disponible", "Titre RNCP niv. 6", "Stage en entreprise"],
+    "villes": ["bordeaux", "lyon", "nantes", "rennes", "strasbourg", "toulouse"],
+    "domaines": ["management", "commerce"],
+    "niveaux_entree": ["bac", "bac1", "bac2"]
+  },
+  {
+    "id": "bachelor-commerce",
+    "titre": "Bachelor Commerce et Marketing",
+    "type": "Bachelor",
+    "description": "Formez-vous aux techniques commerciales, à la stratégie marketing et au digital pour devenir un professionnel recherché sur le marché. Le programme couvre le marketing digital, la gestion de la relation client, la vente complexe et les nouveaux usages data. Des intervenants professionnels ancrés dans le milieu vous apportent leur expertise terrain. La promotion est volontairement à taille humaine pour un suivi personnalisé. Employabilité à 96% à 6 mois.",
+    "image": "",
+    "infos_cles": ["Bac+3", "100% Digital Ready", "Titre RNCP niv. 6", "Projets professionnels"],
+    "villes": ["bordeaux", "lyon", "nantes", "rennes", "strasbourg", "toulouse", "aix", "montpellier"],
+    "domaines": ["commerce", "communication"],
+    "niveaux_entree": ["bac", "bac1", "bac2"]
+  },
+  {
+    "id": "mastere-rh",
+    "titre": "Mastère Ressources Humaines",
+    "type": "Mastère",
+    "description": "Devenez un expert RH capable de piloter la politique sociale d'une organisation, recruter les talents et accompagner la transformation des entreprises. Ce Mastère en 2 ans forme les managers RH de demain avec une approche stratégique et humaine. Gestion des compétences, droit social, SIRH et marque employeur sont au cœur du programme. L'alternance est au centre du dispositif pédagogique. Débouchés : RRH, DRH, Talent Manager.",
+    "image": "",
+    "infos_cles": ["Bac+5", "Alternance", "Titre RNCP niv. 7", "Réseau ESG"],
+    "villes": ["bordeaux", "lyon", "nantes", "toulouse", "strasbourg", "rennes"],
+    "domaines": ["rh", "management"],
+    "niveaux_entree": ["bac3", "bac4"]
+  },
+  {
+    "id": "mba-business",
+    "titre": "MBA Business Development",
+    "type": "MBA",
+    "description": "Acquérez les compétences stratégiques pour piloter la croissance d'une entreprise à l'ère numérique. Ce MBA de haut niveau s'adresse aux professionnels souhaitant évoluer vers des fonctions de direction commerciale, de développement international ou d'entrepreneuriat. Cas réels, mises en situation, coaching individuel et accès au réseau alumni ESG. Programme intensif en 12 mois, disponible en initial ou en alternance. Titre RNCP niveau 7.",
+    "image": "",
+    "infos_cles": ["Bac+5/+6", "12 mois", "Titre RNCP niv. 7", "Réseau international"],
+    "villes": ["bordeaux", "lyon", "nantes", "toulouse", "strasbourg"],
+    "domaines": ["commerce", "management"],
+    "niveaux_entree": ["bac4", "bac5", "mba"]
+  }
+]

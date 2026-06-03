@@ -29,6 +29,12 @@
   <!-- ── APP ────────────────────────────────────────────────── -->
   <div id="admin-app" style="display:none">
 
+    <!-- Loader overlay -->
+    <div id="admin-loader" class="admin-loader" style="display:none">
+      <div class="loader-spinner"></div>
+      <p>Chargement des données…</p>
+    </div>
+
     <header class="admin-header">
       <img src="https://www.esg.fr/sites/all/themes/bootstrapv4_studialis/img/svg/Logo_ESG_Blanc.svg"
            alt="ESG" class="admin-logo">
@@ -38,12 +44,12 @@
 
     <div class="admin-layout">
 
-      <!-- Sidebar tabs -->
+      <!-- Sidebar -->
       <nav class="admin-nav">
         <button class="tab-btn active" data-tab="formations">Formations</button>
         <button class="tab-btn" data-tab="questions">Questions</button>
         <button class="tab-btn" data-tab="regles">Règles de correspondance</button>
-        <button class="btn-reset" onclick="resetToDefaults()">Réinitialiser les données</button>
+        <button class="tab-btn" data-tab="settings">⚙ Paramètres GitHub</button>
       </nav>
 
       <!-- Content -->
@@ -57,11 +63,9 @@
           </div>
           <div id="formations-list" class="items-list"></div>
 
-          <!-- Editor -->
           <div id="formation-editor" class="editor-panel" style="display:none">
             <h3 class="editor-title">Éditer la formation</h3>
             <input type="hidden" id="fe-id">
-
             <div class="field-row">
               <div class="field-group">
                 <label>Titre *</label>
@@ -79,41 +83,36 @@
                 </select>
               </div>
             </div>
-
             <div class="field-group">
               <label>Description (5 lignes)</label>
-              <textarea id="fe-description" rows="5" placeholder="Texte de présentation de la formation..."></textarea>
+              <textarea id="fe-description" rows="5" placeholder="Texte de présentation..."></textarea>
             </div>
-
             <div class="field-group">
               <label>URL de l'image</label>
               <input type="text" id="fe-image" placeholder="https://...">
             </div>
-
             <div class="field-group">
-              <label>Infos clés <span class="hint">(une par ligne, ex : Bac+3)</span></label>
+              <label>Infos clés <span class="hint">(une par ligne)</span></label>
               <textarea id="fe-infos" rows="4" placeholder="Bac+3&#10;Alternance disponible&#10;Titre RNCP niv. 6"></textarea>
             </div>
-
             <div class="field-row three-cols">
               <div class="field-group">
                 <label>Villes disponibles</label>
                 <div class="checkbox-grid" id="fe-villes">
-                  <label class="cb-label"><input type="checkbox" value="aix">        Aix-en-Provence</label>
-                  <label class="cb-label"><input type="checkbox" value="bordeaux">   Bordeaux</label>
-                  <label class="cb-label"><input type="checkbox" value="biarritz">   Biarritz</label>
-                  <label class="cb-label"><input type="checkbox" value="dijon">      Dijon</label>
-                  <label class="cb-label"><input type="checkbox" value="lyon">       Lyon</label>
-                  <label class="cb-label"><input type="checkbox" value="montpellier">Montpellier</label>
-                  <label class="cb-label"><input type="checkbox" value="nantes">     Nantes</label>
-                  <label class="cb-label"><input type="checkbox" value="rennes">     Rennes</label>
-                  <label class="cb-label"><input type="checkbox" value="rouen">      Rouen</label>
-                  <label class="cb-label"><input type="checkbox" value="strasbourg"> Strasbourg</label>
-                  <label class="cb-label"><input type="checkbox" value="toulouse">   Toulouse</label>
-                  <label class="cb-label"><input type="checkbox" value="tours">      Tours</label>
+                  <label class="cb-label"><input type="checkbox" value="aix">         Aix-en-Provence</label>
+                  <label class="cb-label"><input type="checkbox" value="bordeaux">    Bordeaux</label>
+                  <label class="cb-label"><input type="checkbox" value="biarritz">    Biarritz</label>
+                  <label class="cb-label"><input type="checkbox" value="dijon">       Dijon</label>
+                  <label class="cb-label"><input type="checkbox" value="lyon">        Lyon</label>
+                  <label class="cb-label"><input type="checkbox" value="montpellier"> Montpellier</label>
+                  <label class="cb-label"><input type="checkbox" value="nantes">      Nantes</label>
+                  <label class="cb-label"><input type="checkbox" value="rennes">      Rennes</label>
+                  <label class="cb-label"><input type="checkbox" value="rouen">       Rouen</label>
+                  <label class="cb-label"><input type="checkbox" value="strasbourg">  Strasbourg</label>
+                  <label class="cb-label"><input type="checkbox" value="toulouse">    Toulouse</label>
+                  <label class="cb-label"><input type="checkbox" value="tours">       Tours</label>
                 </div>
               </div>
-
               <div class="field-group">
                 <label>Domaines</label>
                 <div class="checkbox-grid" id="fe-domaines">
@@ -127,7 +126,6 @@
                   <label class="cb-label"><input type="checkbox" value="luxe">          Luxe</label>
                 </div>
               </div>
-
               <div class="field-group">
                 <label>Niveaux d'entrée</label>
                 <div class="checkbox-grid" id="fe-niveaux">
@@ -142,7 +140,6 @@
                 </div>
               </div>
             </div>
-
             <div class="editor-actions">
               <button class="btn-save" onclick="saveFormation()">Enregistrer</button>
               <button class="btn-cancel" onclick="closeFormationEditor()">Annuler</button>
@@ -161,7 +158,6 @@
           <div id="question-editor" class="editor-panel" style="display:none">
             <h3 class="editor-title">Éditer la question</h3>
             <input type="hidden" id="qe-id">
-
             <div class="field-row">
               <div class="field-group">
                 <label>Texte de la question *</label>
@@ -179,16 +175,13 @@
                 </select>
               </div>
             </div>
-
             <div class="field-group">
               <label>
                 Choix de réponses
-                <span class="hint">(un par ligne, format : <code>id|Label affiché</code>)</span>
+                <span class="hint">(un par ligne — format : <code>id|Label affiché</code>)</span>
               </label>
-              <textarea id="qe-choices" rows="8"
-                placeholder="oui|Oui&#10;non|Non"></textarea>
+              <textarea id="qe-choices" rows="8" placeholder="oui|Oui&#10;non|Non"></textarea>
             </div>
-
             <div class="editor-actions">
               <button class="btn-save" onclick="saveQuestion()">Enregistrer</button>
               <button class="btn-cancel" onclick="closeQuestionEditor()">Annuler</button>
@@ -201,18 +194,59 @@
           <div class="content-header">
             <h2>Règles de correspondance</h2>
             <p class="content-desc">
-              Pour chaque formation, cochez les villes, domaines et niveaux d'entrée qui déclenchent son affichage dans les résultats.
-              Les modifications sont sauvegardées automatiquement.
+              Pour chaque formation, cochez les villes, domaines et niveaux qui déclenchent son affichage.
+              Chaque modification est publiée instantanément sur GitHub.
             </p>
           </div>
           <div id="regles-container"></div>
+        </div>
+
+        <!-- ── PARAMÈTRES ──────────────────────────────────── -->
+        <div id="tab-settings" class="tab-content">
+          <div class="content-header">
+            <h2>Paramètres GitHub</h2>
+            <p class="content-desc">
+              Le back office publie les modifications directement dans votre dépôt GitHub via l'API.
+              Un <strong>Personal Access Token</strong> avec la permission <code>contents:write</code> est requis.
+            </p>
+          </div>
+
+          <div class="settings-card">
+            <div class="settings-info">
+              <h3>Comment obtenir un token ?</h3>
+              <ol>
+                <li>Allez sur <strong>github.com → Settings → Developer settings → Personal access tokens → Fine-grained tokens</strong></li>
+                <li>Cliquez <strong>Generate new token</strong></li>
+                <li>Sélectionnez le repo <strong>esg-quiz</strong></li>
+                <li>Permission : <strong>Contents → Read and write</strong></li>
+                <li>Copiez le token généré ci-dessous</li>
+              </ol>
+            </div>
+
+            <div class="field-group" style="margin-top:1.5rem">
+              <label>Personal Access Token GitHub</label>
+              <input type="password" id="s-token" placeholder="github_pat_xxxxxxxxxxxxxxxx" autocomplete="off">
+            </div>
+
+            <div class="field-group settings-repo-info">
+              <label>Dépôt ciblé</label>
+              <div class="repo-badge">
+                <span>📁</span>
+                <span id="s-repo-display">lbenhaim-galileo / esg-quiz (branche : main)</span>
+              </div>
+            </div>
+
+            <div class="editor-actions">
+              <button class="btn-save" onclick="saveSettings()">Enregistrer le token</button>
+              <button id="btn-test-token" class="btn-cancel" onclick="testGitHubConnection()">Tester la connexion</button>
+            </div>
+          </div>
         </div>
 
       </main>
     </div>
   </div>
 
-  <!-- Toast notification -->
   <div id="toast" class="toast"></div>
 
   <script src="js/data.js"></script>

@@ -1,0 +1,64 @@
+[
+  {
+    "id": "q_etudiant",
+    "step": 1,
+    "text": "Bienvenue ! Faisons connaissance. Êtes-vous actuellement étudiant(e) ?",
+    "type": "binary",
+    "choices": [
+      { "id": "oui", "label": "Oui" },
+      { "id": "non", "label": "Non" }
+    ]
+  },
+  {
+    "id": "q_ville",
+    "step": 2,
+    "text": "Dans quelle ville souhaiteriez-vous le plus faire vos études ?",
+    "type": "chips",
+    "choices": [
+      { "id": "aix",         "label": "Aix-en-Provence" },
+      { "id": "bordeaux",    "label": "Bordeaux" },
+      { "id": "biarritz",    "label": "Biarritz" },
+      { "id": "dijon",       "label": "Dijon" },
+      { "id": "lyon",        "label": "Lyon" },
+      { "id": "montpellier", "label": "Montpellier" },
+      { "id": "nantes",      "label": "Nantes" },
+      { "id": "rennes",      "label": "Rennes" },
+      { "id": "rouen",       "label": "Rouen" },
+      { "id": "strasbourg",  "label": "Strasbourg" },
+      { "id": "toulouse",    "label": "Toulouse" },
+      { "id": "tours",       "label": "Tours" }
+    ]
+  },
+  {
+    "id": "q_niveau",
+    "step": 3,
+    "text": "Quel niveau de diplôme préparez-vous actuellement ?",
+    "type": "chips",
+    "choices": [
+      { "id": "bac",   "label": "Lycée (Bac ou équivalent)" },
+      { "id": "bac1",  "label": "Bac+1" },
+      { "id": "bac2",  "label": "Bac+2" },
+      { "id": "bac3",  "label": "Bac+3" },
+      { "id": "bac4",  "label": "Bac+4" },
+      { "id": "bac5",  "label": "Bac+5" },
+      { "id": "mba",   "label": "MBA" },
+      { "id": "autre", "label": "Autre" }
+    ]
+  },
+  {
+    "id": "q_domaine",
+    "step": 4,
+    "text": "Avez-vous une appétence pour un domaine de formation ?",
+    "type": "chips",
+    "choices": [
+      { "id": "commerce",      "label": "Commerce et Marketing" },
+      { "id": "communication", "label": "Communication" },
+      { "id": "rh",            "label": "Ressources Humaines" },
+      { "id": "finance",       "label": "Finance" },
+      { "id": "management",    "label": "Gestion / Management" },
+      { "id": "immobilier",    "label": "Immobilier" },
+      { "id": "sport",         "label": "Sport" },
+      { "id": "luxe",          "label": "Luxe" }
+    ]
+  }
+]
